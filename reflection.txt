@@ -1,0 +1,38 @@
+// Stack Mechanics //
+
+When I ran the recursive factorial function, I could clearly see how the stack grows and shrinks. 
+Each time the function was called, it printed “Entering factorial(n),” which showed the program going deeper into the recursion. 
+Once it reached the base case (n ≤ 1), the function started returning values, and I saw the “Returning from factorial(n)” messages in reverse order. 
+This helped me visualize how the stack unwinds after reaching the deepest point. 
+Each function call adds a new stack frame, and those frames are removed one by one as the function returns.
+
+With the Fibonacci function, I noticed that the output was much more complex. 
+The depth tracking showed that the recursion went deeper and happened more frequently compared to factorial. 
+This is because Fibonacci makes two recursive calls instead of one, which increases the number of stack frames quickly.
+
+When I ran the infinite recursion function, the program crashed with a segmentation fault. 
+This showed what happens when there is no base case and the stack keeps growing until it runs out of memory. 
+From this, I learned that each function call stores important data on the stack, including parameters, local variables, and the return address. 
+If too many calls are made, the stack overflows and the program crashes.
+
+// Recursion Costs //
+
+Comparing factorial and Fibonacci, Fibonacci uses much more stack space even for the same input. 
+Factorial only makes one recursive call per level, so the stack grows linearly. In contrast, Fibonacci branches into two calls each time, which creates an exponential number of calls. 
+This leads to deeper and more complex stack usage.
+
+Python limits recursion depth to around 1000 calls to prevent crashes like the one I experienced in C. 
+Without this limit, programs could easily overflow the stack and crash, especially with recursive functions that don’t have proper base cases or that grow too quickly. 
+The segmentation fault I saw in C is exactly what Python is trying to prevent with its recursion limit.
+
+// Function Pointers and Callbacks //
+
+Function pointers allow functions to be passed as arguments, which makes programs more flexible. 
+In this assignment, I used function pointers to apply different operations to an array, such as doubling, squaring, or negating values. 
+Instead of writing separate functions for each case, I could reuse the same processing function and just change the callback.
+
+A real-world example of callbacks is in graphical user interfaces, where functions are triggered by events like button clicks or mouse movement. 
+For example, when a user clicks a button, a specific function runs in response.
+
+Even though function pointers can make code harder to read, they are very useful in systems programming because they allow for dynamic behavior. 
+This means the program can decide what function to run at runtime, which is important for things like event systems, drivers, and frameworks.
